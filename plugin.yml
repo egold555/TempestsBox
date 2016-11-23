@@ -1,0 +1,7 @@
+name: TheTempestsBox
+main: org.golde.bukkit.tempestsbox.Main
+version: 1.0
+author: Eric Golde
+description: A plugin based off of the command block contraption TTB.
+website: http://eric.golde.org/
+depends: [PowerNBT]

@@ -138,7 +138,7 @@ public class Mobs implements Listener {
 			if(mob == MobType.BLIGHT_SNIPER){
 				eq.setHelmet(new ItemStack(Material.SKULL_ITEM, 1, (short) 4));
 				eq.setItemInMainHand(new ItemStack(Material.BOW));
-				EntityUtils.setNBT(le, NBTTags.NO_GRAVITY, 1);
+				EntityUtils.setNBT(le, NBTTags.ENTITY_NO_GRAVITY, 1);
 			}
 
 
@@ -168,7 +168,7 @@ public class Mobs implements Listener {
 			if(entity instanceof LivingEntity){
 				LivingEntity le = (LivingEntity)entity;
 				if(type == MobType.VAMPIRE){
-					EntityUtils.setNBT(le, NBTTags.GLIDE, 1);
+					EntityUtils.setNBT(le, NBTTags.ENTITY_GLIDE, 1);
 				}
 
 				if(type.getItemMoving().getTypeId() == 0 || type.getItemStill().getTypeId() == 0){

@@ -33,7 +33,7 @@ public class ItemUtils {
 		armor.setItemMeta(meta);
 		return armor;
 	}
-	
+
 	public static ItemStack colorLeatherArmor(ItemStack leatherArmor, int rgb){
 		ItemStack armor = new ItemStack(leatherArmor);
 		LeatherArmorMeta meta = (LeatherArmorMeta) armor.getItemMeta();
@@ -42,7 +42,7 @@ public class ItemUtils {
 		armor.setItemMeta(meta);
 		return armor;
 	}
-	
+
 	public static ItemStack itemFlag(Material material, ItemFlag flag){
 		ItemStack is = new ItemStack(material);
 		ItemMeta ism = is.getItemMeta();
@@ -74,21 +74,21 @@ public class ItemUtils {
 		skull.setItemMeta(skullMeta);
 		return skull;
 	}
-	
+
 	public static ItemStack glow(ItemStack item) {
-        net.minecraft.server.v1_11_R1.ItemStack asNMSCopy = org.bukkit.craftbukkit.v1_11_R1.inventory.CraftItemStack.asNMSCopy(item);
-        net.minecraft.server.v1_11_R1.NBTTagCompound tagCompound = null;
-        if (!asNMSCopy.hasTag()) {
-            tagCompound = new net.minecraft.server.v1_11_R1.NBTTagCompound();
-            asNMSCopy.setTag(tagCompound);
-        }
-        if (tagCompound == null) tagCompound = asNMSCopy.getTag();
-        net.minecraft.server.v1_11_R1.NBTTagList enchantmen = new net.minecraft.server.v1_11_R1.NBTTagList();
-        tagCompound.set("ench", enchantmen);
-        asNMSCopy.setTag(tagCompound);
-        return org.bukkit.craftbukkit.v1_11_R1.inventory.CraftItemStack.asCraftMirror(asNMSCopy);
-    }
-	
+		net.minecraft.server.v1_11_R1.ItemStack asNMSCopy = org.bukkit.craftbukkit.v1_11_R1.inventory.CraftItemStack.asNMSCopy(item);
+		net.minecraft.server.v1_11_R1.NBTTagCompound tagCompound = null;
+		if (!asNMSCopy.hasTag()) {
+			tagCompound = new net.minecraft.server.v1_11_R1.NBTTagCompound();
+			asNMSCopy.setTag(tagCompound);
+		}
+		if (tagCompound == null) tagCompound = asNMSCopy.getTag();
+		net.minecraft.server.v1_11_R1.NBTTagList enchantmen = new net.minecraft.server.v1_11_R1.NBTTagList();
+		tagCompound.set("ench", enchantmen);
+		asNMSCopy.setTag(tagCompound);
+		return org.bukkit.craftbukkit.v1_11_R1.inventory.CraftItemStack.asCraftMirror(asNMSCopy);
+	}
+
 	public static ItemStack writeAttributeNBT(ItemStack item, 
 			double amount, 
 			String attributeName,
@@ -101,7 +101,7 @@ public class ItemUtils {
 		NBTTagCompound compound = (nmsStack.hasTag()) ? nmsStack.getTag() : new NBTTagCompound();
 		NBTTagList modifiers = new NBTTagList();
 		NBTTagCompound damage = new NBTTagCompound();
-		
+
 		damage.set("AttributeName", new NBTTagString(attributeName));
 		damage.set("Name", new NBTTagString(name));
 		damage.set("Amount", new NBTTagDouble(amount));
@@ -115,5 +115,5 @@ public class ItemUtils {
 		item = CraftItemStack.asBukkitCopy(nmsStack);
 		return item;
 	}
-	
+
 }

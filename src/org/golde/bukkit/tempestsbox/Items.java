@@ -27,53 +27,178 @@ public class Items {
 		return item;
 	}
 	
-	public static ItemStack wand_mage(){
+	public static ItemStack wand_Mage(){
 		ItemStack item = new ItemStack(Material.GOLD_AXE, 1 ,(short) 1);
 		ItemMeta im = item.getItemMeta();
 		im.spigot().setUnbreakable(true);
-		im.addEnchant(Enchantment.FIRE_ASPECT, 1, false);
+		im.addEnchant(Enchantment.FIRE_ASPECT, 1, true);
+		im.setDisplayName("Mage Wand");
 		item.setItemMeta(im);
 		item = ItemUtils.writeAttributeNBT(item, 
 				2D, 
 				NBTTags.ATTRIBUTE_ATTACK_DAMAGE, 
 				NBTTags.ATTRIBUTE_ATTACK_DAMAGE, 
 				0, 
-				"mainhand", 
-				-4885884885878255694L, 
-				61439903582761209L);
+				NBTTags.SLOT_MAIN_HAND, 
+				-8233369823848316590L, 
+				3719552739384051249L);
 		
 		return item;
 	}
 	
-	/*public static ItemStack wand_(){
-		ItemStack item = new ItemStack(Material.GOLD_AXE, 1 ,(short) 0);
+	public static ItemStack wand_Skitter(){
+		ItemStack item = new ItemStack(Material.GOLD_AXE, 1 ,(short) 3);
 		ItemMeta im = item.getItemMeta();
 		im.spigot().setUnbreakable(true);
+		im.addEnchant(Enchantment.DAMAGE_ARTHROPODS, 3, true);
+		im.setDisplayName("Skitter Wand");
+		item.setItemMeta(im);
+		item = ItemUtils.writeAttributeNBT(item, 
+				2D, 
+				NBTTags.ATTRIBUTE_ATTACK_DAMAGE, 
+				NBTTags.ATTRIBUTE_ATTACK_DAMAGE, 
+				0, 
+				NBTTags.SLOT_MAIN_HAND,  
+				-7424410760657711634L, 
+				-7554250765841379690L);
+		return item;
+	}
+	
+	public static ItemStack wand_Blight1(){
+		ItemStack item = new ItemStack(Material.GOLD_AXE, 1 ,(short) 4);
+		ItemMeta im = item.getItemMeta();
+		im.addEnchant(Enchantment.KNOCKBACK, 5, true);
+		im.setDisplayName("Blight Wand");
+		im.spigot().setUnbreakable(true);
+		item.setItemMeta(im);
+		item = ItemUtils.writeAttributeNBT(item, 
+				9.338134765625, 
+				NBTTags.ATTRIBUTE_ATTACK_DAMAGE, 
+				NBTTags.ATTRIBUTE_ATTACK_DAMAGE, 
+				0, 
+				NBTTags.SLOT_MAIN_HAND, 
+				-6863519381320161937L, 
+				-15344109554744767L);
+		
+		item = ItemUtils.writeAttributeNBT(item, 
+				-0.456188201904297, 
+				NBTTags.ATTRIBUTE_MOVEMENT_SPEED, 
+				NBTTags.ATTRIBUTE_MOVEMENT_SPEED, 
+				2, 
+				NBTTags.SLOT_MAIN_HAND, 
+				-6121861343960198676L, 
+				789026046482597736L);
+		
+		item = ItemUtils.writeAttributeNBT(item, 
+				0.952083230018616, 
+				NBTTags.ATTRIBUTE_KNOCKBACK_RESTANCE, 
+				NBTTags.ATTRIBUTE_KNOCKBACK_RESTANCE, 
+				0, 
+				NBTTags.SLOT_MAIN_HAND, 
+				-6840173344109694555L, 
+				-1342092685219313642L);
+		
+		item = ItemUtils.writeAttributeNBT(item, 
+				6.59788608551025, 
+				NBTTags.ATTRIBUTE_PROTECTION, 
+				NBTTags.ATTRIBUTE_PROTECTION, 
+				0, 
+				NBTTags.SLOT_MAIN_HAND, 
+				-5798861740502849041L, 
+				7189376148689210832L);
 		
 		return item;
 	}
 	
-	public static ItemStack wand_(){
-		ItemStack item = new ItemStack(Material.GOLD_AXE, 1 ,(short) 0);
+	public static ItemStack wand_Blight2(){
+		ItemStack item = new ItemStack(Material.GOLD_AXE, 1 ,(short) 4);
 		ItemMeta im = item.getItemMeta();
+		im.addEnchant(Enchantment.KNOCKBACK, 5, true);
+		im.setDisplayName("Blight Wand");
 		im.spigot().setUnbreakable(true);
+		item.setItemMeta(im);
+		item = ItemUtils.writeAttributeNBT(item, 
+				8.34257221221924, 
+				NBTTags.ATTRIBUTE_ATTACK_DAMAGE, 
+				NBTTags.ATTRIBUTE_ATTACK_DAMAGE, 
+				0, 
+				NBTTags.SLOT_MAIN_HAND, 
+				-4817179725424735413L, 
+				-5407007825425644159L);
+		
+		item = ItemUtils.writeAttributeNBT(item, 
+				-0.364152073860168, 
+				NBTTags.ATTRIBUTE_MOVEMENT_SPEED, 
+				NBTTags.ATTRIBUTE_MOVEMENT_SPEED, 
+				2, 
+				NBTTags.SLOT_MAIN_HAND, 
+				-6177780671878384993L, 
+				-7499709849060425303L);
+		
+		item = ItemUtils.writeAttributeNBT(item, 
+				0.926301121711731, 
+				NBTTags.ATTRIBUTE_KNOCKBACK_RESTANCE, 
+				NBTTags.ATTRIBUTE_KNOCKBACK_RESTANCE, 
+				0, 
+				NBTTags.SLOT_MAIN_HAND, 
+				-6840173344109694555L, 
+				-1342092685219313642L);
+		
+		item = ItemUtils.writeAttributeNBT(item, 
+				6.59788608551025, 
+				NBTTags.ATTRIBUTE_PROTECTION, 
+				NBTTags.ATTRIBUTE_PROTECTION, 
+				0, 
+				NBTTags.SLOT_MAIN_HAND, 
+				-9189159932500084036L, 
+				-370325273706083728L);
 		
 		return item;
 	}
 	
-	public static ItemStack wand_(){
-		ItemStack item = new ItemStack(Material.GOLD_AXE, 1 ,(short) 0);
+	public static ItemStack wand_Blight3(){
+		ItemStack item = new ItemStack(Material.GOLD_AXE, 1 ,(short) 4);
 		ItemMeta im = item.getItemMeta();
+		im.addEnchant(Enchantment.KNOCKBACK, 5, true);
+		im.setDisplayName("Blight Wand");
 		im.spigot().setUnbreakable(true);
+		item.setItemMeta(im);
+		item = ItemUtils.writeAttributeNBT(item, 
+				11.103645324707, 
+				NBTTags.ATTRIBUTE_ATTACK_DAMAGE, 
+				NBTTags.ATTRIBUTE_ATTACK_DAMAGE, 
+				0, 
+				NBTTags.SLOT_MAIN_HAND, 
+				-5754112898655651906L, 
+				-1178534629162532382L);
+		
+		item = ItemUtils.writeAttributeNBT(item, 
+				-0.303770184516907, 
+				NBTTags.ATTRIBUTE_MOVEMENT_SPEED, 
+				NBTTags.ATTRIBUTE_MOVEMENT_SPEED, 
+				2, 
+				NBTTags.SLOT_MAIN_HAND, 
+				-7861519196039510101L, 
+				-4810131425312289736L);
+		
+		item = ItemUtils.writeAttributeNBT(item, 
+				0.841692209243774, 
+				NBTTags.ATTRIBUTE_KNOCKBACK_RESTANCE, 
+				NBTTags.ATTRIBUTE_KNOCKBACK_RESTANCE, 
+				0, 
+				NBTTags.SLOT_MAIN_HAND, 
+				-6949682300619456212L, 
+				-2014357608905225868L);
+		
+		item = ItemUtils.writeAttributeNBT(item, 
+				7.43396949768066, 
+				NBTTags.ATTRIBUTE_PROTECTION, 
+				NBTTags.ATTRIBUTE_PROTECTION, 
+				0, 
+				NBTTags.SLOT_MAIN_HAND, 
+				-8791250682516921177L, 
+				-1647189113784939636L);
 		
 		return item;
 	}
-	
-	public static ItemStack wand_(){
-		ItemStack item = new ItemStack(Material.GOLD_AXE, 1 ,(short) 0);
-		ItemMeta im = item.getItemMeta();
-		im.spigot().setUnbreakable(true);
-		
-		return item;
-	}*/
 }

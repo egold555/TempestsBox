@@ -43,7 +43,11 @@ public class Main extends JavaPlugin{
 		Player p = (Player)sender;
 		
 		if(cmd.getName().equalsIgnoreCase("test")){
-			p.getInventory().addItem(Items.wand_mage());
+			p.getInventory().addItem(Items.wand_Mage());
+			p.getInventory().addItem(Items.wand_Skitter());
+			p.getInventory().addItem(Items.wand_Blight1());
+			p.getInventory().addItem(Items.wand_Blight2());
+			p.getInventory().addItem(Items.wand_Blight3());
 			return true;
 		}
 		

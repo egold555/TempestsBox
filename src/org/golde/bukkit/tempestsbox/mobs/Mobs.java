@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
-import net.minecraft.server.v1_11_R1.Block;
-
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -34,7 +32,6 @@ import org.golde.bukkit.tempestsbox.Items;
 import org.golde.bukkit.tempestsbox.Main;
 import org.golde.bukkit.tempestsbox.util.EntityUtils;
 import org.golde.bukkit.tempestsbox.util.ItemUtils;
-import org.golde.bukkit.tempestsbox.util.MathUtils;
 import org.golde.bukkit.tempestsbox.util.WorldUtils;
 
 
@@ -92,28 +89,28 @@ public class Mobs implements Listener {
 			}
 
 			if(mob == MobType.AQUARIOUS){
-				eq.setHelmet(Items.aquariousHead());
+				eq.setHelmet(Items.head_aquarious());
 				eq.setChestplate(ItemUtils.colorLeatherArmor(new ItemStack(Material.LEATHER_CHESTPLATE), 7039557));
 				eq.setLeggings(ItemUtils.colorLeatherArmor(new ItemStack(Material.LEATHER_LEGGINGS), 7039557));
 				eq.setBoots(ItemUtils.colorLeatherArmor(new ItemStack(Material.LEATHER_BOOTS), 5057290));
 			}
 
 			if(mob == MobType.ASSASSIN){
-				eq.setHelmet(Items.assassinHead());
+				eq.setHelmet(Items.head_assassin());
 				eq.setChestplate(ItemUtils.colorLeatherArmor(new ItemStack(Material.LEATHER_CHESTPLATE), 5855063));
 				eq.setLeggings(ItemUtils.colorLeatherArmor(new ItemStack(Material.LEATHER_LEGGINGS), 5526612));
 				//eq.setBoots(Items.featherBoots());
 			}
 
 			if(mob == MobType.TORGAN){
-				eq.setHelmet(Items.torganHead());
+				eq.setHelmet(Items.head_torgan());
 				eq.setChestplate(ItemUtils.colorLeatherArmor(new ItemStack(Material.LEATHER_CHESTPLATE), 1321760));
 				eq.setLeggings(ItemUtils.colorLeatherArmor(new ItemStack(Material.LEATHER_LEGGINGS), 1321760));
 				eq.setBoots(ItemUtils.colorLeatherArmor(new ItemStack(Material.LEATHER_BOOTS), 0));
 			}
 
 			if(mob == MobType.MAGRA){
-				eq.setHelmet(Items.magraHead());
+				eq.setHelmet(Items.head_magra());
 				//eq.setChestplate(Items.magraChestplate());
 				eq.setLeggings(ItemUtils.colorLeatherArmor(new ItemStack(Material.LEATHER_LEGGINGS), 1321760));
 				//eq.setBoots(Items.magraBoots());

@@ -3,6 +3,10 @@ package org.golde.bukkit.tempestsbox.util;
 import java.lang.reflect.Field;
 import java.util.UUID;
 
+import me.dpohvar.powernbt.PowerNBT;
+import me.dpohvar.powernbt.api.NBTCompound;
+import me.dpohvar.powernbt.api.NBTManager;
+
 import org.apache.commons.codec.binary.Base64;
 import org.bukkit.Color;
 import org.bukkit.Material;
@@ -67,7 +71,7 @@ public class ItemUtils {
 		return skull;
 	}
 	
-	public ItemStack glow(ItemStack item) {
+	public static ItemStack glow(ItemStack item) {
         net.minecraft.server.v1_11_R1.ItemStack asNMSCopy = org.bukkit.craftbukkit.v1_11_R1.inventory.CraftItemStack.asNMSCopy(item);
         net.minecraft.server.v1_11_R1.NBTTagCompound tagCompound = null;
         if (!asNMSCopy.hasTag()) {
@@ -80,5 +84,12 @@ public class ItemUtils {
         asNMSCopy.setTag(tagCompound);
         return org.bukkit.craftbukkit.v1_11_R1.inventory.CraftItemStack.asCraftMirror(asNMSCopy);
     }
+	
+	static NBTManager manager = PowerNBT.getApi();
+	public static void writeAttributeNBT(ItemStack item, String tag, Object value){
+		NBTCompound nbt = manager.read(item);
+		nbt.put(tag, value);
+		manager.write(item, nbt);
+	}
 	
 }

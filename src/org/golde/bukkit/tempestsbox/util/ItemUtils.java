@@ -3,13 +3,17 @@ package org.golde.bukkit.tempestsbox.util;
 import java.lang.reflect.Field;
 import java.util.UUID;
 
-import me.dpohvar.powernbt.PowerNBT;
-import me.dpohvar.powernbt.api.NBTCompound;
-import me.dpohvar.powernbt.api.NBTManager;
+import net.minecraft.server.v1_11_R1.NBTTagCompound;
+import net.minecraft.server.v1_11_R1.NBTTagDouble;
+import net.minecraft.server.v1_11_R1.NBTTagInt;
+import net.minecraft.server.v1_11_R1.NBTTagList;
+import net.minecraft.server.v1_11_R1.NBTTagLong;
+import net.minecraft.server.v1_11_R1.NBTTagString;
 
 import org.apache.commons.codec.binary.Base64;
 import org.bukkit.Color;
 import org.bukkit.Material;
+import org.bukkit.craftbukkit.v1_11_R1.inventory.CraftItemStack;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -85,11 +89,31 @@ public class ItemUtils {
         return org.bukkit.craftbukkit.v1_11_R1.inventory.CraftItemStack.asCraftMirror(asNMSCopy);
     }
 	
-	static NBTManager manager = PowerNBT.getApi();
-	public static void writeAttributeNBT(ItemStack item, String tag, Object value){
-		NBTCompound nbt = manager.read(item);
-		nbt.put(tag, value);
-		manager.write(item, nbt);
+	public static ItemStack writeAttributeNBT(ItemStack item, 
+			double amount, 
+			String attributeName,
+			String name,
+			int operation,
+			String slot,
+			long uuidLeast,
+			long uuidMost){
+		net.minecraft.server.v1_11_R1.ItemStack nmsStack = CraftItemStack.asNMSCopy(item);
+		NBTTagCompound compound = (nmsStack.hasTag()) ? nmsStack.getTag() : new NBTTagCompound();
+		NBTTagList modifiers = new NBTTagList();
+		NBTTagCompound damage = new NBTTagCompound();
+		
+		damage.set("AttributeName", new NBTTagString(attributeName));
+		damage.set("Name", new NBTTagString(name));
+		damage.set("Amount", new NBTTagDouble(amount));
+		damage.set("Operation", new NBTTagInt(operation));
+		damage.set("UUIDLeast", new NBTTagLong(uuidLeast));
+		damage.set("UUIDMost", new NBTTagLong(uuidMost));
+		damage.set("Slot", new NBTTagString(slot));
+		modifiers.add(damage);
+		compound.set("AttributeModifiers", modifiers);
+		nmsStack.setTag(compound);
+		item = CraftItemStack.asBukkitCopy(nmsStack);
+		return item;
 	}
 	
 }

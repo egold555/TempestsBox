@@ -1,3 +1,6 @@
 /bin
 
 .classpath
+.class
+*.class
+bin/org/golde/bukkit/tempestsbox/Items.class

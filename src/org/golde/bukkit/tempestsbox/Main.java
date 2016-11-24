@@ -41,6 +41,13 @@ public class Main extends JavaPlugin{
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		Player p = (Player)sender;
+		
+		if(cmd.getName().equalsIgnoreCase("test")){
+			p.getInventory().addItem(Items.wand_mage());
+			return true;
+		}
+		
+		
 		mobs.spawn(p.getLocation(), MobType.get(cmd.getName()));
 		return true;
 	}

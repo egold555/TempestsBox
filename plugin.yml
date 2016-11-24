@@ -5,3 +5,8 @@ author: Eric Golde
 description: A plugin based off of the command block contraption TTB.
 website: http://eric.golde.org/
 depends: [PowerNBT]
+commands:
+    test:
+        usage: /test
+        description: for testing
+        

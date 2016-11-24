@@ -28,16 +28,19 @@ public class Items {
 	}
 	
 	public static ItemStack wand_mage(){
-		ItemStack item = new ItemStack(Material.GOLD_AXE, 1 ,(short) 0);
+		ItemStack item = new ItemStack(Material.GOLD_AXE, 1 ,(short) 1);
 		ItemMeta im = item.getItemMeta();
 		im.spigot().setUnbreakable(true);
-		ItemUtils.writeAttributeNBT(item, "Amount", 2);
-		ItemUtils.writeAttributeNBT(item, "AttributeName", NBTTags.ATTRIBUTE_ATTACK_DAMAGE);
-		ItemUtils.writeAttributeNBT(item, "Name", null);
-		ItemUtils.writeAttributeNBT(item, "Operation", 0);
-		ItemUtils.writeAttributeNBT(item, "Slot", "mainhand");
-		ItemUtils.writeAttributeNBT(item, "UUIDLeast", -4885884885878255694L);
-		ItemUtils.writeAttributeNBT(item, "UUIDMost", -61439903582761209L);
+		im.addEnchant(Enchantment.FIRE_ASPECT, 1, false);
+		item.setItemMeta(im);
+		item = ItemUtils.writeAttributeNBT(item, 
+				2D, 
+				NBTTags.ATTRIBUTE_ATTACK_DAMAGE, 
+				NBTTags.ATTRIBUTE_ATTACK_DAMAGE, 
+				0, 
+				"mainhand", 
+				-4885884885878255694L, 
+				61439903582761209L);
 		
 		return item;
 	}

@@ -3,11 +3,13 @@ package org.golde.bukkit.tempestsbox.mobs;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Random;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Particle;
+import org.bukkit.block.Block;
 import org.bukkit.craftbukkit.v1_11_R1.entity.CraftEnderman;
 import org.bukkit.craftbukkit.v1_11_R1.entity.CraftZombie;
 import org.bukkit.entity.Enderman;
@@ -41,6 +43,8 @@ public class Mobs implements Listener {
 
 	@SuppressWarnings("unused")
 	private Main main;
+	
+	private Random random = new Random();
 
 	public Mobs(Main main){
 		new BukkitRunnable(){
@@ -93,6 +97,9 @@ public class Mobs implements Listener {
 				eq.setChestplate(ItemUtils.colorLeatherArmor(new ItemStack(Material.LEATHER_CHESTPLATE), 7039557));
 				eq.setLeggings(ItemUtils.colorLeatherArmor(new ItemStack(Material.LEATHER_LEGGINGS), 7039557));
 				eq.setBoots(ItemUtils.colorLeatherArmor(new ItemStack(Material.LEATHER_BOOTS), 5057290));
+				
+				// AQUARIOUS can't drown.
+				le.addPotionEffect(new PotionEffect(PotionEffectType.WATER_BREATHING, Integer.MAX_VALUE, 1, false, false));
 			}
 
 			if(mob == MobType.ASSASSIN){
@@ -155,6 +162,9 @@ public class Mobs implements Listener {
 					}
 				}
 			}
+			else if (type == MobType.AQUARIOUS) {
+				drownNearbyPlayers(entity);
+			}
 			if(entity instanceof LivingEntity){
 				LivingEntity le = (LivingEntity)entity;
 				if(type == MobType.VAMPIRE){
@@ -173,6 +183,50 @@ public class Mobs implements Listener {
 			}
 		}
 
+	}
+	
+	// Drown players that are near Aquarious.
+	private void drownNearbyPlayers(Entity entityAquarious)
+	{
+		final int secondsPerDrown = 5;  // Try to drown nearby players approximates this many seconds.
+		final int drownRadius = 10;     // Radius of players to drown.
+		
+		if (random.nextInt(secondsPerDrown * 20) == 0) {
+			// Try to drown nearby players.
+			for(Entity entityToDrown:entityAquarious.getNearbyEntities(drownRadius, drownRadius, drownRadius)) {
+				if (entityToDrown instanceof Player) {
+					// Don't try to drown players that are already drowning.
+					if (! entityToDrown.getLocation().getBlock().isLiquid()) {
+						drownPlayer((Player) entityToDrown);
+					}
+				}
+			}
+		}
+	}
+	
+	// Drown a player by creating a hole under the player and filling it with water.
+	private void drownPlayer(Player player)
+	{
+		Location l = player.getLocation();
+		
+		// If the location 2 under the player is already liquid or air, don't do anything.
+		l.add(0, -2, 0);
+		Block block = l.getBlock();
+		if (block.isLiquid() || block.isEmpty())
+			return;
+		
+		// Create a hole and fill it with water.
+		for (int z = l.getBlockZ() - 1; z <= l.getBlockZ() + 1; ++z) {
+			for (int x = l.getBlockX() - 1; x <= l.getBlockX() + 1; ++x) {
+				for (int y = l.getBlockY(); y <= l.getBlockY() + 2; ++y) {
+					Block b = l.getWorld().getBlockAt(x, y, z);
+					b.setType(Material.WATER);
+				}
+			}
+		}
+		
+		// Teleport the player to the bottom of the hole.
+		player.teleport(l);
 	}
 
 	private void particles(Entity entity){

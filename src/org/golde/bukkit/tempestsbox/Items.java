@@ -1,11 +1,17 @@
 package org.golde.bukkit.tempestsbox;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.potion.Potion;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+import org.bukkit.potion.PotionType;
 import org.golde.bukkit.tempestsbox.mobs.NBTTags;
 import org.golde.bukkit.tempestsbox.util.ItemUtils;
+import org.golde.bukkit.tempestsbox.util.MathUtils;
 
 public class Items {
 
@@ -27,7 +33,7 @@ public class Items {
 		return item;
 	}
 	
-	public static ItemStack wand_Mage(){
+	public static ItemStack wandMage(){
 		ItemStack item = new ItemStack(Material.GOLD_AXE, 1 ,(short) 1);
 		ItemMeta im = item.getItemMeta();
 		im.spigot().setUnbreakable(true);
@@ -46,7 +52,7 @@ public class Items {
 		return item;
 	}
 	
-	public static ItemStack wand_Skitter(){
+	public static ItemStack wandSkitter(){
 		ItemStack item = new ItemStack(Material.GOLD_AXE, 1 ,(short) 3);
 		ItemMeta im = item.getItemMeta();
 		im.spigot().setUnbreakable(true);
@@ -64,7 +70,8 @@ public class Items {
 		return item;
 	}
 	
-	public static ItemStack wand_Blight1(){
+	@Deprecated
+	public static ItemStack wandBlight1(){
 		ItemStack item = new ItemStack(Material.GOLD_AXE, 1 ,(short) 4);
 		ItemMeta im = item.getItemMeta();
 		im.addEnchant(Enchantment.KNOCKBACK, 5, true);
@@ -110,7 +117,8 @@ public class Items {
 		return item;
 	}
 	
-	public static ItemStack wand_Blight2(){
+	@Deprecated
+	public static ItemStack wandBlight2(){
 		ItemStack item = new ItemStack(Material.GOLD_AXE, 1 ,(short) 4);
 		ItemMeta im = item.getItemMeta();
 		im.addEnchant(Enchantment.KNOCKBACK, 5, true);
@@ -156,7 +164,8 @@ public class Items {
 		return item;
 	}
 	
-	public static ItemStack wand_Blight3(){
+	@Deprecated
+	public static ItemStack wandBlight3(){
 		ItemStack item = new ItemStack(Material.GOLD_AXE, 1 ,(short) 4);
 		ItemMeta im = item.getItemMeta();
 		im.addEnchant(Enchantment.KNOCKBACK, 5, true);
@@ -198,6 +207,121 @@ public class Items {
 				NBTTags.SLOT_MAIN_HAND, 
 				-8791250682516921177L, 
 				-1647189113784939636L);
+		
+		return item;
+	}
+	
+	public static ItemStack vampireFang(){
+		ItemStack item = new ItemStack(Material.GOLD_AXE, 1 ,(short) 2);
+		ItemMeta im = item.getItemMeta();
+		im.setDisplayName("Vampire Fang");
+		im.spigot().setUnbreakable(true);
+		item.setItemMeta(im);
+		item = ItemUtils.writeAttributeNBT(item, 
+				2, 
+				NBTTags.ATTRIBUTE_ATTACK_DAMAGE, 
+				NBTTags.ATTRIBUTE_ATTACK_DAMAGE, 
+				0, 
+				NBTTags.SLOT_MAIN_HAND, 
+				-4885884885878255694L, 
+				-61439903582761209L);
+		
+		return item;
+	}
+	
+	public static ItemStack relicDark(){
+		ItemStack item = new ItemStack(Material.CARROT_STICK, 1 ,(short) 25);
+		ItemMeta im = item.getItemMeta();
+		im.setDisplayName(ChatColor.GREEN + "Dark Relic");
+		im.spigot().setUnbreakable(true);
+		item.setItemMeta(im);
+		return item;
+	}
+	
+	public static ItemStack relicBright(){
+		ItemStack item = new ItemStack(Material.IRON_HOE, 1 ,(short) 250);
+		ItemMeta im = item.getItemMeta();
+		im.setDisplayName(ChatColor.GREEN + "Bright Relic");
+		im.spigot().setUnbreakable(true);
+		item.setItemMeta(im);
+		return item;
+	}
+	
+	public static ItemStack flippers(){
+		ItemStack item = new ItemStack(Material.LEATHER_BOOTS);
+		item = ItemUtils.colorLeatherArmor(item, 1668457);
+		ItemMeta im = item.getItemMeta();
+		im.addEnchant(Enchantment.DEPTH_STRIDER, 5, true);
+		im.setDisplayName("Flippers");
+		item.setItemMeta(im);
+		return item;
+	}
+	
+	public static ItemStack brownBoots(){
+		ItemStack item = new ItemStack(Material.LEATHER_BOOTS);
+		item = ItemUtils.colorLeatherArmor(item, 3997696);
+		ItemMeta im = item.getItemMeta();
+		im.addEnchant(Enchantment.PROTECTION_FIRE, 5, true);
+		item.setItemMeta(im);
+		return item;
+	}
+	
+	public static ItemStack orcMead(){
+		PotionEffect[] pe = {
+				new PotionEffect(PotionEffectType.SPEED, MathUtils.secondsToTicks(20), 2),
+				new PotionEffect(PotionEffectType.INCREASE_DAMAGE, MathUtils.secondsToTicks(20), 2),
+				new PotionEffect(PotionEffectType.SATURATION, MathUtils.secondsToTicks(20), 2),
+				new PotionEffect(PotionEffectType.BLINDNESS, MathUtils.secondsToTicks(10), 0),
+				new PotionEffect(PotionEffectType.POISON, MathUtils.secondsToTicks(10), 1)
+				};
+		ItemStack item = ItemUtils.makeCustomPotion(pe);
+		ItemMeta im = item.getItemMeta();
+		im.setDisplayName("Orc Mead");
+		item.setItemMeta(im);
+		return item;
+	}
+	
+	public static ItemStack wispDiamond(){
+		ItemStack item = new ItemStack(Material.DIAMOND);
+		ItemMeta im = item.getItemMeta();
+		im.setDisplayName("Wisp Diamond");
+		item.setItemMeta(im);
+		return item;
+	}
+	
+	@Deprecated
+	public static ItemStack katana(){
+		ItemStack item = new ItemStack(Material.IRON_SWORD);
+		ItemMeta im = item.getItemMeta();
+		im.setDisplayName("Katana");
+		item.setItemMeta(im);
+		
+		item = ItemUtils.writeAttributeNBT(item, 
+				0.15, 
+				NBTTags.ATTRIBUTE_MOVEMENT_SPEED, 
+				NBTTags.ATTRIBUTE_MOVEMENT_SPEED, 
+				1, 
+				NBTTags.SLOT_OFF_HAND, 
+				174155, 
+				993339);
+		
+		item = ItemUtils.writeAttributeNBT(item, 
+				4, 
+				NBTTags.ATTRIBUTE_ATTACK_DAMAGE, 
+				NBTTags.ATTRIBUTE_ATTACK_DAMAGE, 
+				0, 
+				NBTTags.SLOT_MAIN_HAND, 
+				643498, 
+				30196);
+		
+		item = ItemUtils.writeAttributeNBT(item, 
+				0.2, 
+				NBTTags.ATTRIBUTE_ATTACK_SPEED, 
+				NBTTags.ATTRIBUTE_ATTACK_SPEED, 
+				1, 
+				NBTTags.SLOT_OFF_HAND, 
+				294643, 
+				640820);
 		
 		return item;
 	}

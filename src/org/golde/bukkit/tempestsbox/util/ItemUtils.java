@@ -18,11 +18,15 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
+import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.potion.Potion;
+import org.bukkit.potion.PotionEffect;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 
+@SuppressWarnings("deprecation")
 public class ItemUtils {
 
 	public static ItemStack colorLeatherArmor(ItemStack leatherArmor, int r, int g, int b){
@@ -113,6 +117,23 @@ public class ItemUtils {
 		compound.set("AttributeModifiers", modifiers);
 		nmsStack.setTag(compound);
 		item = CraftItemStack.asBukkitCopy(nmsStack);
+		return item;
+	}
+	
+	public static ItemStack makeCustomPotion(PotionEffect effect){
+		PotionEffect[] effects = {effect};
+		return makeCustomPotion(effects);
+	}
+	
+	public static ItemStack makeCustomPotion(PotionEffect[] effects){
+		ItemStack item = new ItemStack(Material.POTION);
+		PotionMeta meta= (PotionMeta)item.getItemMeta();
+		for(PotionEffect pe:effects){
+			meta.addCustomEffect(pe, true);
+		}
+		item.setItemMeta(meta);
+		Potion po = new Potion(1);
+		po.apply(item);
 		return item;
 	}
 

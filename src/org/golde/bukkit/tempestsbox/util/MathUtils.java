@@ -19,5 +19,9 @@ public class MathUtils {
 		}
 		return nl;
 	}
+	
+	public static int hoursToTicks(int hours){return hours*60*60*20;}
+	public static int minToTicks(int min){return min*60*20;}
+	public static int secondsToTicks(int seconds){return seconds*20;}
 
 }

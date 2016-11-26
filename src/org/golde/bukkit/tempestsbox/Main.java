@@ -43,11 +43,11 @@ public class Main extends JavaPlugin{
 		Player p = (Player)sender;
 		
 		if(cmd.getName().equalsIgnoreCase("test")){
-			//p.getInventory().addItem(Items.wandMage());
-			//p.getInventory().addItem(Items.wandSkitter());
-			//p.getInventory().addItem(Items.wandBlight1());
-			//p.getInventory().addItem(Items.wandBlight2());
-			//p.getInventory().addItem(Items.wandBlight3());
+			p.getInventory().addItem(Items.wandMage());
+			p.getInventory().addItem(Items.wandSkitter());
+			p.getInventory().addItem(Items.wandBlight1());
+			p.getInventory().addItem(Items.wandBlight2());
+			p.getInventory().addItem(Items.wandBlight3());
 			p.getInventory().addItem(Items.orcMead());
 			p.getInventory().addItem(Items.relicBright());
 			p.getInventory().addItem(Items.relicDark());

@@ -3,6 +3,7 @@ package org.golde.bukkit.tempestsbox.util;
 import java.lang.reflect.Field;
 import java.util.UUID;
 
+import net.minecraft.server.v1_11_R1.NBTBase;
 import net.minecraft.server.v1_11_R1.NBTTagCompound;
 import net.minecraft.server.v1_11_R1.NBTTagDouble;
 import net.minecraft.server.v1_11_R1.NBTTagInt;
@@ -103,9 +104,17 @@ public class ItemUtils {
 			long uuidMost){
 		net.minecraft.server.v1_11_R1.ItemStack nmsStack = CraftItemStack.asNMSCopy(item);
 		NBTTagCompound compound = (nmsStack.hasTag()) ? nmsStack.getTag() : new NBTTagCompound();
-		NBTTagList modifiers = new NBTTagList();
+		NBTTagList modifiers; 
+		
+		NBTBase modifiersBase = compound.get("AttributeModifiers");
+		if (modifiersBase != null && modifiersBase instanceof NBTTagList) {
+			modifiers = (NBTTagList)modifiersBase;
+		}
+		else {
+			modifiers = new NBTTagList();
+		}
+		
 		NBTTagCompound damage = new NBTTagCompound();
-
 		damage.set("AttributeName", new NBTTagString(attributeName));
 		damage.set("Name", new NBTTagString(name));
 		damage.set("Amount", new NBTTagDouble(amount));

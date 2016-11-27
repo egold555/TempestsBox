@@ -5,10 +5,8 @@ import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.potion.Potion;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-import org.bukkit.potion.PotionType;
 import org.golde.bukkit.tempestsbox.mobs.NBTTags;
 import org.golde.bukkit.tempestsbox.util.ItemUtils;
 import org.golde.bukkit.tempestsbox.util.MathUtils;
@@ -21,6 +19,12 @@ public class Items {
 	public static ItemStack head_torgan(){return ItemUtils.getSkull("f3ec1becf0112da877ee9da42723e2433b3cce32a6ddb8771ea71caa85b5a4");}
 	public static ItemStack head_magra(){return ItemUtils.getSkull("9a57327baa14a3c126a4277d301f7522d2251a31aa69adebbbf191fdb8f5");}
 	public static ItemStack head_angryZombie(){return ItemUtils.getSkull("7bc9d88162f874b46770132f599b72a20fb22824ef09ec7d35850498b4016");}
+	
+	public static ItemStack netherAxe()
+	{
+		// TODO: Implement this.
+		return new ItemStack(Material.GOLD_AXE);
+	}
 	
 	@SuppressWarnings("deprecation")
 	public static ItemStack blightBone(){

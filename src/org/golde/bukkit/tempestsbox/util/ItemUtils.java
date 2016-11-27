@@ -1,6 +1,9 @@
 package org.golde.bukkit.tempestsbox.util;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 import net.minecraft.server.v1_11_R1.NBTBase;
@@ -12,6 +15,7 @@ import net.minecraft.server.v1_11_R1.NBTTagLong;
 import net.minecraft.server.v1_11_R1.NBTTagString;
 
 import org.apache.commons.codec.binary.Base64;
+import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.craftbukkit.v1_11_R1.inventory.CraftItemStack;
@@ -29,7 +33,8 @@ import com.mojang.authlib.properties.Property;
 
 @SuppressWarnings("deprecation")
 public class ItemUtils {
-
+	public static Random random = new Random();
+	
 	public static ItemStack colorLeatherArmor(ItemStack leatherArmor, int r, int g, int b){
 		ItemStack armor = new ItemStack(leatherArmor);
 		LeatherArmorMeta meta = (LeatherArmorMeta) armor.getItemMeta();
@@ -146,4 +151,53 @@ public class ItemUtils {
 		return item;
 	}
 
+	public static List<ItemStack> getDrops(int number, PossibleDrop... drops)
+	{
+		return getDrops(number, number, drops);
+	}
+	
+	public static List<ItemStack> getDrops(int minNumber, int maxNumber, PossibleDrop... drops)
+	{
+		List<ItemStack> result = new ArrayList<ItemStack>();
+		
+		int numDrops = minNumber + random.nextInt(maxNumber - minNumber + 1); 
+		for (int i = 0; i < numDrops; ++i) {
+			ItemStack is = getOneDrop(drops);
+			if (is.getAmount() > 0)
+				result.add(is);
+		}
+		
+		return result;
+	}
+	
+	private static ItemStack getOneDrop(PossibleDrop... drops) 
+	{
+		int totalWeight = 0;
+		for (PossibleDrop d: drops) {
+			totalWeight += d.weight;
+		}
+		
+		int roll = random.nextInt(totalWeight);
+		PossibleDrop chosen = null;
+		for (PossibleDrop d: drops) {
+			roll -= d.weight;
+			if (roll < 0) {
+				chosen = d;
+				break;
+			}
+		}	
+		
+		ItemStack itemStack = chosen.itemStack.clone();
+		if (chosen.minDamage < 1.0) {
+			double damage = chosen.minDamage + (random.nextDouble() * (chosen.maxDamage + chosen.minDamage));
+			short maxDurability = itemStack.getType().getMaxDurability();
+			itemStack.setDurability((short) Math.floor((1.0-damage) * maxDurability));
+		}
+		
+		int amount = chosen.min + random.nextInt(chosen.max - chosen.min + 1);
+		itemStack.setAmount(amount);
+		
+		return itemStack;
+	}
+	
 }

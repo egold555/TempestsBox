@@ -1,5 +1,6 @@
 package org.golde.bukkit.tempestsbox.mobs;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -34,6 +35,7 @@ import org.golde.bukkit.tempestsbox.Items;
 import org.golde.bukkit.tempestsbox.Main;
 import org.golde.bukkit.tempestsbox.util.EntityUtils;
 import org.golde.bukkit.tempestsbox.util.ItemUtils;
+import org.golde.bukkit.tempestsbox.util.PossibleDrop;
 import org.golde.bukkit.tempestsbox.util.WorldUtils;
 
 
@@ -271,12 +273,114 @@ public class Mobs implements Listener {
 		}
 
 		LivingEntity le = e.getEntity();
+		MobType mobType = getType(le);
 		allMobs.remove(le);
-		List<ItemStack> drops = e.getDrops();
-
-		if(getType(le) == MobType.OGRE){
-			drops.clear();drops.add(new ItemStack(Material.DIAMOND));
+		
+		List<ItemStack> customDrops = getDrops(mobType);
+		if (customDrops != null) {
+			//Bukkit.broadcastMessage("Dropping " + customDrops.size() + " items:");
+			//for(ItemStack is: customDrops) {
+			//	Bukkit.broadcastMessage("    " + is.toString());
+			//}
+			
+			e.getDrops().clear();
+			e.getDrops().addAll(customDrops);
 		}
+
+	}
+	
+	List<ItemStack> getDrops(MobType mobType)
+	{
+		List<ItemStack> result = new ArrayList<ItemStack>();
+
+		if (mobType == MobType.ANGRY_ZOMBIE) {
+			result.addAll(ItemUtils.getDrops(1, new PossibleDrop(1, Material.ROTTEN_FLESH, 0, 2)));
+			if (random.nextDouble() < 0.025) {
+				result.addAll(ItemUtils.getDrops(1,  new PossibleDrop(1, Material.IRON_INGOT),
+						                             new PossibleDrop(1, Material.CARROT_ITEM),
+						                             new PossibleDrop(1, Material.POTATO_ITEM),
+						                             new PossibleDrop(1, Material.GOLD_INGOT),
+						                             new PossibleDrop(1, Material.REDSTONE, 1, 6),
+						                             new PossibleDrop(1, Material.EMERALD)));
+			}
+		}
+		else if (mobType == MobType.AQUARIOUS) {
+			result.addAll(ItemUtils.getDrops(1, new PossibleDrop(1, new ItemStack(Material.RAW_FISH, 1, (short)0, (byte)0), 0, 5),
+					                            new PossibleDrop(1, new ItemStack(Material.RAW_FISH, 1, (short)0, (byte)1), 0, 5),
+					                            new PossibleDrop(1, new ItemStack(Material.RAW_FISH, 1, (short)0, (byte)2), 0, 5),
+					                            new PossibleDrop(1, new ItemStack(Material.RAW_FISH, 1, (short)0, (byte)3), 0, 5),
+					                            new PossibleDrop(2, Items.flippers()),
+					                            new PossibleDrop(2, Material.PRISMARINE_SHARD, 0, 6)));
+		}
+		else if (mobType == MobType.BLIGHT) {
+			result.addAll(ItemUtils.getDrops(1, new PossibleDrop(1, Items.wandBlight1()),
+			                                    new PossibleDrop(1, Items.wandBlight2()),
+			                                    new PossibleDrop(1, Items.wandBlight3())));
+		}
+		else if (mobType == MobType.DUSKBLOOD) {
+			result.addAll(ItemUtils.getDrops(1, new PossibleDrop(1, Material.FERMENTED_SPIDER_EYE, 0, 4)));
+			if (random.nextDouble() < 0.05) {
+				result.addAll(ItemUtils.getDrops(1, new PossibleDrop(1, Material.IRON_INGOT, 1, 2),
+						                             new PossibleDrop(1, Material.COAL, 1, 4),
+						                             new PossibleDrop(1, Material.SKULL),
+						                             new PossibleDrop(1, Material.GOLD_INGOT),
+						                             new PossibleDrop(1, Material.SULPHUR, 1, 6),
+						                             new PossibleDrop(1, Material.BONE, 1, 5)));
+			}
+		}
+		else if (mobType == MobType.MAGE) {
+			result.addAll(ItemUtils.getDrops(1, new PossibleDrop(1, Items.wandMage())));
+		}
+		else if (mobType == MobType.OGRE) {
+			result.addAll(ItemUtils.getDrops(1,  new PossibleDrop(1, Material.ROTTEN_FLESH, 0, 4)));
+			if (random.nextDouble() < 0.2) {
+				result.addAll(ItemUtils.getDrops(1, new PossibleDrop(1, Material.IRON_INGOT, 1, 2),
+							                        new PossibleDrop(1, Material.COAL, 1, 4),
+							                        new PossibleDrop(1, Material.SKULL),
+							                        new PossibleDrop(1, Material.GOLD_INGOT),
+							                        new PossibleDrop(1, Material.SULPHUR, 1, 6),
+							                        new PossibleDrop(1, Material.BONE, 1, 5)));
+			}
+		}
+		else if (mobType == MobType.NETHERKNIGHT) {
+			result.addAll(ItemUtils.getDrops(1,  new PossibleDrop(1, Items.netherAxe()),
+					                             new PossibleDrop(1, Material.GOLD_BLOCK, 1, 2)));
+		}
+		else if (mobType == MobType.MAGRA || mobType == MobType.TORGAN) {
+			result.addAll(ItemUtils.getDrops(1, new PossibleDrop(1, Material.PORK, 0, 2),
+							                    new PossibleDrop(1, Material.GOLD_NUGGET, 0, 5),
+							                    new PossibleDrop(1, Material.BONE, 0, 6),
+							                    new PossibleDrop(1, Material.SPECKLED_MELON, 0, 3),
+							                    new PossibleDrop(2, Items.orcMead()),
+							                    new PossibleDrop(1, Material.EMERALD)));
+		}
+		else if (mobType == MobType.SKITTER) {
+			result.addAll(ItemUtils.getDrops(1, new PossibleDrop(1, Items.wandSkitter())));
+		}
+		else if (mobType == MobType.VAMPIRE || mobType == MobType.VAMPIRE_BAT) {
+			result.addAll(ItemUtils.getDrops(1, new PossibleDrop(1, Items.vampireFang())));
+		}
+		else if (mobType == MobType.WANDERER) {
+			result.addAll(ItemUtils.getDrops(1, new PossibleDrop(1, Material.REDSTONE, 0, 4),
+							                    new PossibleDrop(1, Material.GLOWSTONE, 0, 3),
+							                    new PossibleDrop(1, Material.SULPHUR, 0, 2)));
+		}
+		else if (mobType == MobType.YETI) {
+			result.addAll(ItemUtils.getDrops(1,  new PossibleDrop(1, Material.SNOW_BALL, 0, 4)));
+			if (random.nextDouble() < 0.2) {
+				result.addAll(ItemUtils.getDrops(1, new PossibleDrop(1, Material.IRON_INGOT, 1, 2),
+							                        new PossibleDrop(1, Material.COAL, 1, 4),
+							                        new PossibleDrop(1, Material.SKULL),
+							                        new PossibleDrop(1, Material.GOLD_INGOT),
+							                        new PossibleDrop(1, Material.SULPHUR, 1, 6),
+							                        new PossibleDrop(1, Material.BONE, 1, 5)));
+			}
+		}
+		else {
+			return null;
+		}
+
+		return result;
 	}
 
 	@EventHandler

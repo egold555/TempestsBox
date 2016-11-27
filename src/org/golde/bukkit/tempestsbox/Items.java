@@ -68,7 +68,6 @@ public class Items {
 		return item;
 	}
 	
-	@Deprecated
 	public static ItemStack wandBlight1(){
 		ItemStack item = new ItemStack(Material.GOLD_AXE, 1 ,(short) 4);
 		ItemMeta im = item.getItemMeta();
@@ -115,7 +114,6 @@ public class Items {
 		return item;
 	}
 	
-	@Deprecated
 	public static ItemStack wandBlight2(){
 		ItemStack item = new ItemStack(Material.GOLD_AXE, 1 ,(short) 4);
 		ItemMeta im = item.getItemMeta();
@@ -162,7 +160,6 @@ public class Items {
 		return item;
 	}
 	
-	@Deprecated
 	public static ItemStack wandBlight3(){
 		ItemStack item = new ItemStack(Material.GOLD_AXE, 1 ,(short) 4);
 		ItemMeta im = item.getItemMeta();

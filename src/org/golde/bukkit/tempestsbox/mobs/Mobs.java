@@ -72,8 +72,10 @@ public class Mobs implements Listener {
 
 			if(mob != MobType.BLIGHT_SNIPER 
 					&& mob != MobType.BLIGHT_TNT
-					&& mob != MobType.MAGE_BAT_HELPER){
-				le.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, Integer.MAX_VALUE, 1, false, false));
+					&& mob != MobType.MAGE_BAT_HELPER
+					&& mob != MobType.ENDERMENACE
+					&& mob != MobType.ANGRY_ZOMBIE){
+				EntityUtils.addNeverEndingPotion(le, PotionEffectType.INVISIBILITY);
 			}
 
 			if(mob.getHealth() != ORIGIONAL_VALUE){
@@ -96,17 +98,18 @@ public class Mobs implements Listener {
 				eq.setHelmet(Items.head_aquarious());
 				eq.setChestplate(ItemUtils.colorLeatherArmor(new ItemStack(Material.LEATHER_CHESTPLATE), 7039557));
 				eq.setLeggings(ItemUtils.colorLeatherArmor(new ItemStack(Material.LEATHER_LEGGINGS), 7039557));
-				eq.setBoots(ItemUtils.colorLeatherArmor(new ItemStack(Material.LEATHER_BOOTS), 5057290));
+				eq.setBoots(Items.flippers());
 				
 				// AQUARIOUS can't drown.
-				le.addPotionEffect(new PotionEffect(PotionEffectType.WATER_BREATHING, Integer.MAX_VALUE, 1, false, false));
+				EntityUtils.addNeverEndingPotion(le, PotionEffectType.WATER_BREATHING);
 			}
 
 			if(mob == MobType.ASSASSIN){
 				eq.setHelmet(Items.head_assassin());
 				eq.setChestplate(ItemUtils.colorLeatherArmor(new ItemStack(Material.LEATHER_CHESTPLATE), 5855063));
 				eq.setLeggings(ItemUtils.colorLeatherArmor(new ItemStack(Material.LEATHER_LEGGINGS), 5526612));
-				//eq.setBoots(Items.featherBoots());
+				eq.setBoots(Items.flippers());
+				eq.setBootsDropChance(0);
 			}
 
 			if(mob == MobType.TORGAN){
@@ -281,7 +284,6 @@ public class Mobs implements Listener {
 
 	@EventHandler
 	public void onEntityDamageByEntity (EntityDamageByEntityEvent e) {
-		Bukkit.broadcastMessage("PUNCH");
 		if (e.getEntity() instanceof Player 
 				&& e.getDamager() instanceof LivingEntity 
 				&& isOurMob(e.getDamager())) {

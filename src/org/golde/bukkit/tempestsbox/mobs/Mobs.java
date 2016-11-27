@@ -11,7 +11,6 @@ import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.block.Block;
 import org.bukkit.craftbukkit.v1_11_R1.entity.CraftEnderman;
-import org.bukkit.craftbukkit.v1_11_R1.entity.CraftZombie;
 import org.bukkit.entity.Enderman;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -27,7 +26,6 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.inventory.EntityEquipment;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.golde.bukkit.tempestsbox.Items;
@@ -86,8 +84,8 @@ public class Mobs implements Listener {
 			eq.setHelmetDropChance(0);
 
 			if(e instanceof Zombie){
-				CraftZombie z = (CraftZombie) le;
-				z.getHandle().setBaby(false);
+				EntityUtils.setNBT(le, NBTTags.ZOMBIE_IS_BABY, 0);
+				EntityUtils.setNBT(le, NBTTags.ZOMBIE_IS_VILLAGER, 0);
 			}
 			if(e instanceof Enderman){
 				CraftEnderman c = (CraftEnderman)le;
@@ -121,9 +119,9 @@ public class Mobs implements Listener {
 
 			if(mob == MobType.MAGRA){
 				eq.setHelmet(Items.head_magra());
-				//eq.setChestplate(Items.magraChestplate());
+				eq.setChestplate(ItemUtils.colorLeatherArmor(new ItemStack(Material.LEATHER_CHESTPLATE), 1321760));
 				eq.setLeggings(ItemUtils.colorLeatherArmor(new ItemStack(Material.LEATHER_LEGGINGS), 1321760));
-				//eq.setBoots(Items.magraBoots());
+				eq.setBoots(ItemUtils.colorLeatherArmor(new ItemStack(Material.LEATHER_BOOTS), 0));
 			}
 
 			if(mob == MobType.BLIGHT){
@@ -142,6 +140,15 @@ public class Mobs implements Listener {
 				eq.setHelmet(new ItemStack(Material.SKULL_ITEM, 1, (short) 4));
 				eq.setItemInMainHand(new ItemStack(Material.BOW));
 				EntityUtils.setNBT(le, NBTTags.ENTITY_NO_GRAVITY, 1);
+			}
+			
+			if(mob == MobType.WANDERER){
+				Bukkit.broadcastMessage("IS WANDERER");
+				eq.setHelmet(Items.head_wanderer());
+				eq.setHelmetDropChance(0);
+				EntityUtils.setNBT(le, NBTTags.ZOMBIE_CAN_BREAK_DOORS, 1);
+				EntityUtils.addNeverEndingPotion(le, PotionEffectType.FIRE_RESISTANCE);
+				EntityUtils.addNeverEndingPotion(le, PotionEffectType.GLOWING);
 			}
 
 

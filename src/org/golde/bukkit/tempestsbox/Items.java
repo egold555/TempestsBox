@@ -321,7 +321,7 @@ public class Items {
 		return item;
 	}
 	
-	public ItemStack staffRepulsion(){
+	public static ItemStack staffRepulsion(){
 		ItemStack item = new ItemStack(Material.CARROT_STICK, 1 , (byte)1);
 		ItemMeta im = item.getItemMeta();
 		im.spigot().setUnbreakable(true);
@@ -340,7 +340,7 @@ public class Items {
 		return item;
 	}
 	
-	public ItemStack staffRelativity(){
+	public static ItemStack staffRelativity(){
 		ItemStack item = new ItemStack(Material.CARROT_STICK, 1 , (byte)2);
 		ItemMeta im = item.getItemMeta();
 		im.spigot().setUnbreakable(true);
@@ -359,7 +359,7 @@ public class Items {
 		return item;
 	}
 	
-	public ItemStack staffExtraction(){
+	public static ItemStack staffExtraction(){
 		ItemStack item = new ItemStack(Material.CARROT_STICK, 1 , (byte)3);
 		ItemMeta im = item.getItemMeta();
 		im.spigot().setUnbreakable(true);
@@ -378,7 +378,7 @@ public class Items {
 		return item;
 	}
 	
-	public ItemStack staffRefridgerant(){
+	public static ItemStack staffRefridgerant(){
 		ItemStack item = new ItemStack(Material.CARROT_STICK, 1 , (byte)4);
 		ItemMeta im = item.getItemMeta();
 		im.spigot().setUnbreakable(true);
@@ -397,7 +397,7 @@ public class Items {
 		return item;
 	}
 	
-	public ItemStack staffInfallable(){
+	public static ItemStack staffInfallable(){
 		ItemStack item = new ItemStack(Material.CARROT_STICK, 1 , (byte)5);
 		ItemMeta im = item.getItemMeta();
 		im.spigot().setUnbreakable(true);
@@ -416,7 +416,7 @@ public class Items {
 		return item;
 	}
 	
-	public ItemStack staffShatter(){
+	public static ItemStack staffShatter(){
 		ItemStack item = new ItemStack(Material.CARROT_STICK, 1 , (byte)6);
 		ItemMeta im = item.getItemMeta();
 		im.spigot().setUnbreakable(true);
@@ -435,7 +435,7 @@ public class Items {
 		return item;
 	}
 	
-	public ItemStack staffCaptive(){
+	public static ItemStack staffCaptive(){
 		ItemStack item = new ItemStack(Material.CARROT_STICK, 1 , (byte)8);
 		ItemMeta im = item.getItemMeta();
 		im.spigot().setUnbreakable(true);
@@ -454,7 +454,7 @@ public class Items {
 		return item;
 	}
 	
-	public ItemStack staffTime(){
+	public static ItemStack staffTime(){
 		ItemStack item = new ItemStack(Material.CARROT_STICK, 1 , (byte)7);
 		ItemMeta im = item.getItemMeta();
 		im.spigot().setUnbreakable(true);
@@ -473,7 +473,7 @@ public class Items {
 		return item;
 	}
 	
-	public ItemStack staffEther(){
+	public static ItemStack staffEther(){
 		ItemStack item = new ItemStack(Material.CARROT_STICK, 1 , (byte)9);
 		ItemMeta im = item.getItemMeta();
 		im.spigot().setUnbreakable(true);
@@ -492,7 +492,7 @@ public class Items {
 		return item;
 	}
 	
-	public ItemStack staffHarvest(){
+	public static ItemStack staffHarvest(){
 		ItemStack item = new ItemStack(Material.CARROT_STICK, 1 , (byte)10);
 		ItemMeta im = item.getItemMeta();
 		im.spigot().setUnbreakable(true);

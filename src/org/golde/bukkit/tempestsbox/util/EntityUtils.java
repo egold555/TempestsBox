@@ -29,7 +29,7 @@ public class EntityUtils {
 	}
 	
 	public static void addNeverEndingPotion(LivingEntity le, PotionEffectType pet){
-		addNeverEndingPotion(le, pet, 1);
+		addNeverEndingPotion(le, pet, 0);
 	}
 	
 }

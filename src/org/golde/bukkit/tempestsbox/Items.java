@@ -5,10 +5,8 @@ import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.potion.Potion;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-import org.bukkit.potion.PotionType;
 import org.golde.bukkit.tempestsbox.mobs.NBTTags;
 import org.golde.bukkit.tempestsbox.util.ItemUtils;
 import org.golde.bukkit.tempestsbox.util.MathUtils;
@@ -322,6 +320,196 @@ public class Items {
 				NBTTags.SLOT_OFF_HAND, 
 				294643, 
 				640820);
+		
+		return item;
+	}
+	
+	public ItemStack staffRepulsion(){
+		ItemStack item = new ItemStack(Material.CARROT_STICK, 1 , (byte)1);
+		ItemMeta im = item.getItemMeta();
+		im.spigot().setUnbreakable(true);
+		im.setDisplayName(ChatColor.GREEN + "Repulsion Staff");
+		item.setItemMeta(im);
+		
+		item = ItemUtils.writeAttributeNBT(item, 
+				4.76908826828003, 
+				NBTTags.ATTRIBUTE_ATTACK_DAMAGE, 
+				NBTTags.ATTRIBUTE_ATTACK_DAMAGE, 
+				0, 
+				NBTTags.SLOT_MAIN_HAND, 
+				-7268148700984049992L, 
+				873468059985200988L);
+		
+		return item;
+	}
+	
+	public ItemStack staffRelativity(){
+		ItemStack item = new ItemStack(Material.CARROT_STICK, 1 , (byte)2);
+		ItemMeta im = item.getItemMeta();
+		im.spigot().setUnbreakable(true);
+		im.setDisplayName(ChatColor.GREEN + "Relativity Staff");
+		item.setItemMeta(im);
+		
+		item = ItemUtils.writeAttributeNBT(item, 
+				5.86029815673828, 
+				NBTTags.ATTRIBUTE_ATTACK_DAMAGE, 
+				NBTTags.ATTRIBUTE_ATTACK_DAMAGE, 
+				0, 
+				NBTTags.SLOT_MAIN_HAND, 
+				-6622644245015526825L, 
+				-7107110087656518591L);
+		
+		return item;
+	}
+	
+	public ItemStack staffExtraction(){
+		ItemStack item = new ItemStack(Material.CARROT_STICK, 1 , (byte)3);
+		ItemMeta im = item.getItemMeta();
+		im.spigot().setUnbreakable(true);
+		im.setDisplayName(ChatColor.GREEN + "Extraction Staff");
+		item.setItemMeta(im);
+		
+		item = ItemUtils.writeAttributeNBT(item, 
+				3.91275143623352, 
+				NBTTags.ATTRIBUTE_ATTACK_DAMAGE, 
+				NBTTags.ATTRIBUTE_ATTACK_DAMAGE, 
+				0, 
+				NBTTags.SLOT_MAIN_HAND, 
+				-6825689840052597693L, 
+				2036444835052800580L);
+		
+		return item;
+	}
+	
+	public ItemStack staffRefridgerant(){
+		ItemStack item = new ItemStack(Material.CARROT_STICK, 1 , (byte)4);
+		ItemMeta im = item.getItemMeta();
+		im.spigot().setUnbreakable(true);
+		im.setDisplayName(ChatColor.GREEN + "Refridgerant Staff");
+		item.setItemMeta(im);
+		
+		item = ItemUtils.writeAttributeNBT(item, 
+				5.90391111373901, 
+				NBTTags.ATTRIBUTE_ATTACK_DAMAGE, 
+				NBTTags.ATTRIBUTE_ATTACK_DAMAGE, 
+				0, 
+				NBTTags.SLOT_MAIN_HAND, 
+				-5466201557445651511L, 
+				8706464538726122459L);
+		
+		return item;
+	}
+	
+	public ItemStack staffInfallable(){
+		ItemStack item = new ItemStack(Material.CARROT_STICK, 1 , (byte)5);
+		ItemMeta im = item.getItemMeta();
+		im.spigot().setUnbreakable(true);
+		im.setDisplayName(ChatColor.GREEN + "Infallable Staff");
+		item.setItemMeta(im);
+		
+		item = ItemUtils.writeAttributeNBT(item, 
+				5.0511326789856, 
+				NBTTags.ATTRIBUTE_ATTACK_DAMAGE, 
+				NBTTags.ATTRIBUTE_ATTACK_DAMAGE, 
+				0, 
+				NBTTags.SLOT_MAIN_HAND, 
+				-7639740538895544017L, 
+				-4141365518932688531L);
+		
+		return item;
+	}
+	
+	public ItemStack staffShatter(){
+		ItemStack item = new ItemStack(Material.CARROT_STICK, 1 , (byte)6);
+		ItemMeta im = item.getItemMeta();
+		im.spigot().setUnbreakable(true);
+		im.setDisplayName(ChatColor.GREEN + "Shatter Staff");
+		item.setItemMeta(im);
+		
+		item = ItemUtils.writeAttributeNBT(item, 
+				3.19736242294312, 
+				NBTTags.ATTRIBUTE_ATTACK_DAMAGE, 
+				NBTTags.ATTRIBUTE_ATTACK_DAMAGE, 
+				0, 
+				NBTTags.SLOT_MAIN_HAND, 
+				-6528426823256113489L, 
+				2119715465862398788L);
+		
+		return item;
+	}
+	
+	public ItemStack staffCaptive(){
+		ItemStack item = new ItemStack(Material.CARROT_STICK, 1 , (byte)8);
+		ItemMeta im = item.getItemMeta();
+		im.spigot().setUnbreakable(true);
+		im.setDisplayName(ChatColor.GREEN + "Captive Staff");
+		item.setItemMeta(im);
+		
+		item = ItemUtils.writeAttributeNBT(item, 
+				5.64130020141602, 
+				NBTTags.ATTRIBUTE_ATTACK_DAMAGE, 
+				NBTTags.ATTRIBUTE_ATTACK_DAMAGE, 
+				0, 
+				NBTTags.SLOT_MAIN_HAND, 
+				-5094780472695154922L, 
+				8255462528374230522L);
+		
+		return item;
+	}
+	
+	public ItemStack staffTime(){
+		ItemStack item = new ItemStack(Material.CARROT_STICK, 1 , (byte)7);
+		ItemMeta im = item.getItemMeta();
+		im.spigot().setUnbreakable(true);
+		im.setDisplayName(ChatColor.GREEN + "Time Staff");
+		item.setItemMeta(im);
+		
+		item = ItemUtils.writeAttributeNBT(item, 
+				4.77075624465942, 
+				NBTTags.ATTRIBUTE_ATTACK_DAMAGE, 
+				NBTTags.ATTRIBUTE_ATTACK_DAMAGE, 
+				0, 
+				NBTTags.SLOT_MAIN_HAND, 
+				-6864184254004407158L, 
+				-8145269752995430086L);
+		
+		return item;
+	}
+	
+	public ItemStack staffEther(){
+		ItemStack item = new ItemStack(Material.CARROT_STICK, 1 , (byte)9);
+		ItemMeta im = item.getItemMeta();
+		im.spigot().setUnbreakable(true);
+		im.setDisplayName(ChatColor.GREEN + "Ether Staff");
+		item.setItemMeta(im);
+		
+		item = ItemUtils.writeAttributeNBT(item, 
+				4.58659934997559, 
+				NBTTags.ATTRIBUTE_ATTACK_DAMAGE, 
+				NBTTags.ATTRIBUTE_ATTACK_DAMAGE, 
+				0, 
+				NBTTags.SLOT_MAIN_HAND, 
+				-7205726013286240523L, 
+				4320244184064281863L);
+		
+		return item;
+	}
+	
+	public ItemStack staffHarvest(){
+		ItemStack item = new ItemStack(Material.CARROT_STICK, 1 , (byte)10);
+		ItemMeta im = item.getItemMeta();
+		im.spigot().setUnbreakable(true);
+		im.setDisplayName(ChatColor.GREEN + "Harvest Staff");
+		item.setItemMeta(im);
+		
+		item = ItemUtils.writeAttributeNBT(item, 
+				5.63074064254761, 
+				NBTTags.ATTRIBUTE_ATTACK_DAMAGE, 
+				NBTTags.ATTRIBUTE_ATTACK_DAMAGE, 
+				0, 
+				NBTTags.SLOT_MAIN_HAND, 
+				-9069099229034361723L, 
+				7631145280157338093L);
 		
 		return item;
 	}

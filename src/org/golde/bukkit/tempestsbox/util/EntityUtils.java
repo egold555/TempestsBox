@@ -7,6 +7,8 @@ import me.dpohvar.powernbt.api.NBTManager;
 import org.bukkit.Particle;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 public class EntityUtils {
 	
@@ -20,6 +22,14 @@ public class EntityUtils {
 	
 	public static void spawnParticle(Entity e, Particle pe, int amount){
 		WorldUtils.spawnParticleEffect(e.getLocation(), pe, amount);
+	}
+	
+	public static void addNeverEndingPotion(LivingEntity le, PotionEffectType pet, int amp){
+		le.addPotionEffect(new PotionEffect(pet, Integer.MAX_VALUE, amp, false, false));
+	}
+	
+	public static void addNeverEndingPotion(LivingEntity le, PotionEffectType pet){
+		addNeverEndingPotion(le, pet, 0);
 	}
 	
 }

@@ -3,8 +3,12 @@ package org.golde.bukkit.tempestsbox.mobs;
 public class NBTTags {
 
 	public static final String ENTITY_GLIDE = "FallFlying";
-	public static final String ENTITY_SLIENT = "Slient";
+	public static final String ENTITY_SILENT = "Silent";
 	public static final String ENTITY_NO_GRAVITY = "NoGravity";
+	
+	public static final String ZOMBIE_IS_BABY = "IsVillager";
+	public static final String ZOMBIE_IS_VILLAGER = "IsBaby";
+	public static final String ZOMBIE_CAN_BREAK_DOORS = "CanBreakDoors";
 	
 	public static final String ATTRIBUTE_ATTACK_DAMAGE = "generic.attackDamage";
 	public static final String ATTRIBUTE_ATTACK_SPEED = "generic.attackSpeed";
